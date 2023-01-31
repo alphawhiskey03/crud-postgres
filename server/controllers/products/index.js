@@ -1,5 +1,5 @@
 const db = require("../../db");
-module.exports.getAllProducts = async (req, res) => {
+module.exports.getAllProducts = async (_, res) => {
   try {
     const { rows } = await db.query("SELECT * FROM products");
     res

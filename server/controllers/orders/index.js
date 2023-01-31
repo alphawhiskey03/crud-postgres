@@ -1,6 +1,6 @@
 const db = require("../../db");
 
-module.exports.getAllOrders = async (req, res) => {
+module.exports.getAllOrders = async (_, res) => {
   try {
     const { rows } = await db.query(
       "SELECT orders.* ,COUNT(orderproductmap.id) AS productCount FROM orders JOIN orderproductmap ON orders.id=orderproductmap.orderid GROUP BY orders.id ORDER BY orders.id"
@@ -12,26 +12,31 @@ module.exports.getAllOrders = async (req, res) => {
   }
 };
 module.exports.getOrder = async (req, res) => {
-  const { id } = req.params;
+  try {
+    const { id } = req.params;
 
-  const { rows } = await db.query(
-    "select orders.orderdescription, array(select orderproductmap.productid from orderproductmap join orders on orderproductmap.orderid =orders.id where orderproductmap.orderid=$1) as orderedProducts from orders where orders.id=$1",
-    [id]
-  );
-  if (rows.length == 0) {
-    res.status(404).json({ message: "No orders with the given id found!" });
-    return;
+    const { rows } = await db.query(
+      "select orders.orderdescription, array(select orderproductmap.productid from orderproductmap join orders on orderproductmap.orderid =orders.id where orderproductmap.orderid=$1) as orderedProducts from orders where orders.id=$1",
+      [id]
+    );
+    if (rows.length == 0) {
+      res.status(404).json({ message: "No orders with the given id found!" });
+      return;
+    }
+    const row = rows[0];
+
+    const orderedproducts = row.orderedproducts.reduce((acc, cur) => {
+      acc[cur] = true;
+      return acc;
+    }, {});
+    res.status(200).json({
+      message: "fetched order successfully!",
+      resultData: { ...row, orderedproducts },
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "something wen't wrong" });
   }
-  const row = rows[0];
-
-  const orderedproducts = row.orderedproducts.reduce((acc, cur) => {
-    acc[cur] = true;
-    return acc;
-  }, {});
-  res.status(200).json({
-    message: "fetched order successfully!",
-    resultData: { ...row, orderedproducts },
-  });
 };
 module.exports.saveOrder = async (req, res) => {
   try {
