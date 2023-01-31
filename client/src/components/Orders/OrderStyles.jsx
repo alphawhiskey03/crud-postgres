@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const OrdersContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 10px;
 `;
 export const Header = styled.div`
   display: flex;

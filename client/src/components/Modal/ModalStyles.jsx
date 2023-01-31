@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ModalContainer = styled.div`
   position: absolute;
-  background: white;
+  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,8 +14,8 @@ export const ModalContainer = styled.div`
   padding: 20px;
 `;
 export const ModalHeader = styled.p`
-  font-weight: 500;
-  font-size: 16px;
+  font-weight: 900;
+  font-size: 18px;
   text-align: left;
 `;
 export const ModalBody = styled.div``;

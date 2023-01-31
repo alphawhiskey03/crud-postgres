@@ -1,6 +1,6 @@
 import styled from "styled-components";
 export const MainLayout = styled.div`
-  background-color: #f8f8f8;
+  background-color: white;
   width: 60vw;
   height: 80vh;
   border-radius: 10px;
@@ -18,4 +18,6 @@ export const CheckBox = styled.input`
 `;
 export const Button = styled.button`
   padding: 5px;
+  margin: 5px;
+  width: 10vw;
 `;
