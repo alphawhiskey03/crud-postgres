@@ -93,7 +93,7 @@ const Modal = ({ onClose, mode, orderId }) => {
       alert("Order saved!");
       onClose();
     } catch (err) {
-      console.log(err.message);
+      console.log(err);
       alert("something wen't wrong!");
     }
   };
