@@ -13,7 +13,7 @@ export const InputText = styled.input`
 `;
 
 export const CheckBox = styled.input`
-  &[type="password"] {
+  &[type="checkbox"] {
   }
 `;
 export const Button = styled.button`
