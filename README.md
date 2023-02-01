@@ -19,7 +19,7 @@ PostgreSQL
 
 ## Prerequisites
 
-<p>Install the latest version of Postgres and package managers such as yarn or npm..</p>
+<p>Install the latest version of Postgres, node and package managers such as yarn or npm..</p>
 
 ### Installation
 
@@ -55,7 +55,19 @@ PostgreSQL
    npm install
 ```
 
-4. Import the database file to set up the database.  <a href="https://github.com/alphawhiskey03/crud-postgres/blob/main/database.sql">`database.sql`</a> (Find the file in the main directory of the repository.)
+4. Setup the environment variables in the `./server/env` file.
+
+```
+DB_USER= <database-urername>
+DB_PASSWORD= <database-password>
+DB_HOST= <database-host>
+DB_PORT= <database-port-number>
+DB_NAME= <database-name>
+
+SERVER_PORT= <desired-port-for-server>
+```
+
+5. Import the database file to set up the database.  <a href="https://github.com/alphawhiskey03/crud-postgres/blob/main/database.sql">`database.sql`</a> (Find the file in the main directory of the repository.)
 
 ### Screenshots
 
