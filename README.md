@@ -55,7 +55,7 @@ PostgreSQL
    npm install
 ```
 
-4. Setup the environment variables in the `./server/env` file.
+4. Setup the environment variables in the `./server/.env` file.
 
 ```
 DB_USER= <database-urername>
